@@ -3,12 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "develop": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "start": "NODE_ENV=production node server.js -p $PORT",
+    "heroku-postbuild": "next build"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.2",
