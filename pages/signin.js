@@ -3,7 +3,7 @@ import Head from "next/head";
 import axios from "axios";
 import { setCookie } from "nookies";
 
-const SignUp = () => {
+const SignIn = () => {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -13,7 +13,6 @@ const SignUp = () => {
 
     const res = await axios.post("https://api-loja-mona.herokuapp.com/auth/local/register", {
       username,
-      email,
       password,
     });
 
@@ -26,7 +25,7 @@ const SignUp = () => {
   return (
     <div>
       <Head>
-        <title>Registrar</title>
+        <title>Entrar</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex justify-center items-center" style={{marginTop: 48}}>
@@ -48,22 +47,7 @@ const SignUp = () => {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-800 text-sm font-bold mb-2"
-                htmlFor="email"
-              >
-                Email
-              </label>
-              <input
-                className="appearance-none border rounded w-full p-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
-                id="email"
-                type="email"
-                placeholder="john@doe.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+            
             <div className="mb-8">
               <label
                 className="block text-gray-800 text-sm font-bold mb-2"
@@ -87,7 +71,7 @@ const SignUp = () => {
                 onClick={handleSubmit}
                 style={{background:"var(--color-primary-4)"}}
               >
-                Registrar
+                Entrar
               </button>
               <a
                 className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
@@ -104,4 +88,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;

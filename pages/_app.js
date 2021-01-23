@@ -3,18 +3,12 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import { getCategories } from "../utils/api";
 import "../styles/index.css";
+import "../styles/colors.css";
 
 const MyApp = ({ Component, pageProps }) => {
   return (
     <Layout categories={pageProps.categories}>
       <Head>
-        <link rel="preconnect" href="https://app.snipcart.com" />
-        <link rel="preconnect" href="https://cdn.snipcart.com" />
-        <link
-          rel="stylesheet"
-          href="https://cdn.snipcart.com/themes/v3.0.16/default/snipcart.css"
-        />
-        <script src="https://cdn.snipcart.com/themes/v3.0.16/default/snipcart.js" />
       </Head>
       <Component {...pageProps} />
     </Layout>

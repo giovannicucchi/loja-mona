@@ -6,7 +6,7 @@ const Navbar = () => {
       <Link href="/">
         <a>
           <img
-            src="/strapi.png"
+            src="/logo-mona.png"
             alt="home"
             className="logo"
             height="150"
@@ -14,13 +14,17 @@ const Navbar = () => {
           />
         </a>
       </Link>
-      <Link href="/signup">
-        <a>registrar
-        </a></Link>
-      <button className="snipcart-checkout flex items-center">
-        <img src="/cart.svg" alt="Cart" />
-        <span className="snipcart-total-price ml-3 font-semibold text-sm text-indigo-500"></span>
-      </button>
+      <div>
+        <Link href="/signup">
+          <a style={{marginRight: 8}}>Registrar
+        </a>
+        </Link>
+        <Link href="/signin">
+          <a>Entrar
+        </a>
+        </Link>
+
+      </div>
     </div>
   );
 };
