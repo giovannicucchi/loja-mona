@@ -5,18 +5,17 @@ import { setCookie } from "nookies";
 
 const SignIn = () => {
   const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await axios.post("https://api-loja-mona.herokuapp.com/auth/local/register", {
-      username,
-      password,
+    const { data } = await axios.post("https://api-loja-mona.herokuapp.com/auth/local", {
+      identifier: username,
+      password: password,
     });
-
-    setCookie("", "token", res.data.jwt, {
+    
+    setCookie("", "token", data.jwt, {
       maxAge: 30 * 24 * 60 * 60,
       path: "/"
     });
@@ -28,9 +27,9 @@ const SignIn = () => {
         <title>Entrar</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex justify-center items-center" style={{marginTop: 48}}>
+      <div className="flex justify-center items-center" style={{ marginTop: 48 }}>
         <div className="w-full max-w-md">
-          <form className="shadow-lg rounded p-8" style={{background:"var(--color-primary-1)"}}>
+          <form className="shadow-lg rounded p-8" style={{ background: "var(--color-primary-1)" }}>
             <div className="mb-4">
               <label
                 className="block text-gray-800 text-sm font-bold mb-2"
@@ -47,7 +46,7 @@ const SignIn = () => {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
-            
+
             <div className="mb-8">
               <label
                 className="block text-gray-800 text-sm font-bold mb-2"
@@ -69,14 +68,14 @@ const SignIn = () => {
                 className="text-white font-bold py-4 px-12 rounded focus:outline-none focus:shadow-outline"
                 type="button"
                 onClick={handleSubmit}
-                style={{background:"var(--color-primary-4)"}}
+                style={{ background: "var(--color-primary-4)" }}
               >
                 Entrar
               </button>
               <a
                 className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
                 href="#"
-                style={{color:"var(--color-primary-4)"}}
+                style={{ color: "var(--color-primary-4)" }}
               >
                 Esqueceu sua senha?
               </a>
