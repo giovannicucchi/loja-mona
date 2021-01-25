@@ -3,13 +3,9 @@ import { useRouter } from 'next/router'
 
 const CategoryButtons = ({ categories = [] }) => {
   const router = useRouter()
-  console.log('ROUTER', router)
   return (
     <div className="container flex flex-wrap mx-auto gap-2 mt-8">
       {categories.map((_category, index) => (
-        <>
-
-        {console.log('CONSOLÃO', _category, index)}
         <Link href={`/categories/${_category.slug}`} key={_category.id}>
           
           <a className="font-semibold py-2 px-4 border border-gray-400 rounded shadow"
@@ -18,7 +14,6 @@ const CategoryButtons = ({ categories = [] }) => {
             {_category.name}
           </a>
         </Link>
-        </>
       ))}
     </div>
   );
