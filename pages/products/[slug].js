@@ -68,7 +68,7 @@ export default ProductPage;
 
 export async function getStaticProps({ params }) {
   const product = await getProduct(params.slug);
-  return { props: { product } };
+  return { props: { product }, reavaliate: 60 };
 }
 
 export async function getStaticPaths() {
