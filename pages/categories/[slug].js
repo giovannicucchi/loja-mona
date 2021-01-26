@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import ProductsList from "../../components/ProductsList";
 import { getCategories, getCategory } from "../../utils/api";
 
-const CategoryPage = ({ category }) => {
+const CategoryPage = ({ category, categories }) => {
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading category...</div>;
@@ -14,7 +14,7 @@ const CategoryPage = ({ category }) => {
       <Head>
         <title>{category.name} products</title>
       </Head>
-      <ProductsList products={category.products} />
+      <ProductsList products={category.products} categories={categories} />
     </div>
   );
 };
