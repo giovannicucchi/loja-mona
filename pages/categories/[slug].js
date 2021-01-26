@@ -23,7 +23,7 @@ export default CategoryPage;
 
 export async function getStaticProps({ params }) {
   const category = await getCategory(params.slug);
-  return { props: { category }, reavaliate: 60  };
+  return { props: { category }, revalidate: 60  };
 }
 
 export async function getStaticPaths() {

@@ -15,7 +15,7 @@ const HomePage = ({ products }) => {
 
 export async function getStaticProps() {
   const products = await getProducts();
-  return { props: { products }, reavaliate: 60  };
+  return { props: { products }, revalidate: 60 };
 }
 
 export default HomePage;
