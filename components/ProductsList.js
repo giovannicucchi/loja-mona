@@ -8,7 +8,7 @@ const ProductsList = ({ products, categories = [] }) => {
 
   return (
 
-    <section className="bg-white py-8">
+    <section className="py-8">
 
       <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12">
 
@@ -49,8 +49,8 @@ const ProductsList = ({ products, categories = [] }) => {
         </nav>
 
         {products.map((_product) => (
-          <div className="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-            <div key={_product.id}>
+          <div className="w-full sm:w-1/2 md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+            <div key={_product.id} style={{margin: 'auto'}}>
               <Link href={`/products/${_product.slug}`}>
                 <a>
                   <img className="hover:grow hover:shadow-lg" src={getStrapiMedia(_product.image.formats.thumbnail.url)} alt={_product.title} />
