@@ -1,26 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Head from "next/head";
-import axios from "axios";
-import { setCookie } from "nookies";
+import { registerUser } from "../lib/auth";
+import AuthContext from '../context/AuthContext'
 
 const SignUp = () => {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
+  const authContext = useContext(AuthContext)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await axios.post("https://api-loja-mona.herokuapp.com/auth/local/register", {
-      username,
-      email,
-      password,
-    });
+    setLoading(true);
 
-    setCookie("", "token", res.data.jwt, {
-      maxAge: 30 * 24 * 60 * 60,
-      path: "/"
-    });
+    registerUser(username, email ,password)
+      .then((res) => {
+        setLoading(false);
+        authContext.setUser(res.data.user);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        setLoading(false);
+      });
   };
 
   return (
@@ -81,21 +84,26 @@ const SignUp = () => {
               />
             </div>
             <div className="flex items-center justify-between">
-              <button
-                className="text-white font-bold py-4 px-12 rounded focus:outline-none focus:shadow-outline"
-                type="button"
-                onClick={handleSubmit}
-                style={{background:"var(--color-primary-4)"}}
-              >
-                Registrar
-              </button>
-              <a
-                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                href="#"
-                style={{color:"var(--color-primary-4)"}}
-              >
-                Esqueceu sua senha?
-              </a>
+              {loading 
+                ?  <h2>Cadastrando...</h2> 
+                :  <div>  
+                    <button
+                      className="text-white font-bold py-4 px-12 rounded focus:outline-none focus:shadow-outline"
+                      type="button"
+                      onClick={handleSubmit}
+                      style={{background:"var(--color-primary-4)"}}
+                    >
+                      Registrar
+                    </button>
+                    <a
+                      className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                      href="#"
+                      style={{color:"var(--color-primary-4)"}}
+                    >
+                      Esqueceu sua senha?
+                    </a>
+                  </div>
+              }
             </div>
           </form>
         </div>

@@ -1,24 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect} from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
-import axios from "axios";
-import { setCookie } from "nookies";
+import { login } from "../lib/auth";
+import AuthContext from "../context/AuthContext";
 
 const SignIn = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
+  const router = useRouter();
+  const authContext = useContext(AuthContext)
+
+  useEffect(() => {
+    if (authContext.isAuthenticated) {
+      router.push("/"); 
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
-    const { data } = await axios.post("https://api-loja-mona.herokuapp.com/auth/local", {
-      identifier: username,
-      password: password,
-    });
-    
-    setCookie("", "token", data.jwt, {
-      maxAge: 30 * 24 * 60 * 60,
-      path: "/"
-    });
+    login(username, password)
+      .then((res) => {
+        setLoading(false);
+        authContext.setUser(res.data.user);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        setLoading(false);
+      });
   };
 
   return (
@@ -63,22 +74,22 @@ const SignIn = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+
             <div className="flex items-center justify-between">
-              <button
-                className="text-white font-bold py-4 px-12 rounded focus:outline-none focus:shadow-outline"
-                type="button"
-                onClick={handleSubmit}
-                style={{ background: "var(--color-primary-4)" }}
-              >
-                Entrar
-              </button>
-              <a
-                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                href="#"
-                style={{ color: "var(--color-primary-4)" }}
-              >
-                Esqueceu sua senha?
-              </a>
+              {loading 
+                ?  <p>Entrando...</p>
+                : <div>
+                    <button
+                      className="text-white font-bold py-4 px-12 rounded focus:outline-none focus:shadow-outline"
+                      type="button"
+                      onClick={handleSubmit}
+                      style={{ background: "var(--color-primary-4)" }}
+                    >
+                      Entrar
+                    </button>
+
+                  </div>
+              }
             </div>
           </form>
         </div>
