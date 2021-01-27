@@ -6,7 +6,7 @@ import About from './About'
 
 const Layout = ({ children, categories }) => {
   return (
-    <div className="flex justify-center" style={{background: "var(--color-primary-3)"}}>
+    <div className="flex justify-center" style={{background: "var(--color-primary-0)"}}>
       <div className="max-w-screen-xl flex flex-col min-h-screen w-full">
         <Navbar />
         <Carousel />

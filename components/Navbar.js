@@ -68,7 +68,7 @@ const Navbar = () => {
                   </li>
                 </ul>
                 </>
-              :  <ul className="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
+              :  <ul className="md:flex items-center justify-between text-base text-gray-800 pt-4 md:pt-0">
                     <li>
                       <a  className="inline-block no-underline hover:text-black hover:underline py-2 px-4"  onClick={()=> router.push("/signin")}>Login </a>
                     </li>

@@ -38,7 +38,7 @@ const SignIn = () => {
         <title>Entrar</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex justify-center items-center" style={{ marginTop: 48 }}>
+      <div className="flex justify-center items-center" style={{marginTop: 48, marginBottom: 24 }}>
         <div className="w-full max-w-md">
           <form className="shadow-lg rounded p-8" style={{ background: "var(--color-primary-1)" }}>
             <div className="mb-4">
