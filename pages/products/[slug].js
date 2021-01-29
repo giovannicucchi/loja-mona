@@ -8,6 +8,7 @@ const ProductPage = ({ product }) => {
   if (router.isFallback) {
     return <div>Loading category...</div>;
   }
+
   return (
     <div className="m-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 mt-8">
       <Head>
@@ -38,7 +39,9 @@ const ProductPage = ({ product }) => {
             data-item-price={product.price}
             data-item-url={router.asPath}
             data-item-description={product.description}
-            data-item-image={getStrapiMedia(width>768 ? product.image.formats.small.url : product.image.formats.thumbnail)} 
+            data-item-image={getStrapiMedia(
+              product.image.formats.medium.url
+            )}
             data-item-name={product.title}
             v-bind="customFields"
             style={{ backgroundColor: 'var(--color-primary-4)', color: 'var(--color-primary-2' }}
