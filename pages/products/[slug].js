@@ -8,15 +8,16 @@ const ProductPage = ({ product }) => {
   if (router.isFallback) {
     return <div>Loading category...</div>;
   }
-
   return (
     <div className="m-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 mt-8">
       <Head>
         <title>{product.title} product</title>
       </Head>
       <div className="rounded-t-lg pt-2 pb-2">
+        {/* <div style={{ backgroundImage: `url(${getStrapiMedia(product.image.formats.small.url)})` }} className="image-card-wrapper" /> */}
+
         <img
-          src={getStrapiMedia(product.image.formats.thumbnail.url)}
+          src={getStrapiMedia(product.image.formats.small.url)}
           className="m-auto"
           alt={product.title}
         />
@@ -24,8 +25,9 @@ const ProductPage = ({ product }) => {
       <div className="w-full p-5 flex flex-col justify-between">
         <div>
           <h4 className="mt-1 font-semibold text-lg leading-tight truncate text-gray-700">
-            {product.title} - ${product.price}
-          </h4>
+            {product.title} 
+            </h4>
+            <div className="mt-1 text-gray-800">R${product.price}</div>
           <div className="mt-1 text-gray-600">{product.description}</div>
         </div>
 
@@ -36,29 +38,28 @@ const ProductPage = ({ product }) => {
             data-item-price={product.price}
             data-item-url={router.asPath}
             data-item-description={product.description}
-            data-item-image={getStrapiMedia(
-              product.image.formats.thumbnail.url
-            )}
+            data-item-image={getStrapiMedia(width>768 ? product.image.formats.small.url : product.image.formats.thumbnail)} 
             data-item-name={product.title}
             v-bind="customFields"
+            style={{ backgroundColor: 'var(--color-primary-4)', color: 'var(--color-primary-2' }}
           >
-            Add to cart
+            Comprar agora!
           </button>
         ) : (
-          <div className="text-center mr-10 mb-1" v-else>
-            <div
-              className="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex"
-              role="alert"
-            >
-              <span className="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">
-                Coming soon...
+            <div className="text-center mr-10 mb-1" v-else>
+              <div
+                className="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex"
+                role="alert"
+              >
+                <span className="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">
+                  Coming soon...
               </span>
-              <span className="font-semibold mr-2 text-left flex-auto">
-                This article is not available yet.
+                <span className="font-semibold mr-2 text-left flex-auto">
+                  This article is not available yet.
               </span>
+              </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
     </div>
   );

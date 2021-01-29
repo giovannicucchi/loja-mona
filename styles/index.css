@@ -1,3 +1,42 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.background-nails {
+    background-image: url('../public/nails2.jpg');
+    background-position: 50%;
+    background-size: contain;
+}
+
+.background-white-blur {
+    background-color: #FFFFFFAC;
+    backdrop-filter: blur(7px);
+}
+
+.big-border {
+    border: 20px solid #FFF9FB;
+}
+
+.card-product {
+    border: 2px solid #f083a6 ;
+    padding: 12px;
+    background-color: #FFF9FB ;
+    height: 300px;
+    width: 100%;
+}
+
+.image-card-wrapper {
+    width: 100%;
+    min-height: 75%;
+    background-position: 50%;
+    background-size: cover;
+}
+
+.buy-button {
+    background-color: red;
+    padding: 2px 8px;
+    outline: none;
+}
+.buy-button:focus {
+    outline: none;
+}

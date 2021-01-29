@@ -8,13 +8,10 @@ const ProductsList = ({ products, categories = [] }) => {
 
   return (
 
-    <section className="py-8">
-
+    <section className="py-8" style={{ paddingTop: 0 }}>
       <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12">
-
         <nav id="store" className="w-full z-30 top-0 px-6 py-1">
           <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
-
             <a className="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
               {currentCategory}
             </a>
@@ -48,52 +45,32 @@ const ProductsList = ({ products, categories = [] }) => {
           </div>
         </nav>
 
-        {products.map((_product) => (
-          <div className="w-full sm:w-1/2 md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-            <div key={_product.id} style={{margin: 'auto'}}>
-              <Link href={`/products/${_product.slug}`}>
-                <a>
-                  <img className="hover:grow hover:shadow-lg" src={getStrapiMedia(_product.image.formats.thumbnail.url)} alt={_product.title} />
+        <div className="background-nails">
+          <div className="w-full flex flex-wrap items-center background-white-blur">
+            {products.map((_product) => (
+              <div className="w-full sm:w-1/2 md:w-1/3 xl:w-1/4 p-6 flex flex-col" style={{ height: '100%' }}>
+                <div className="card-product" key={_product.id} style={{ margin: 'auto' }}>
+
+                  <div style={{ backgroundImage: `url(${getStrapiMedia(_product.image.formats.small.url)})` }} className="image-card-wrapper" />
                   <div className="pt-3 flex items-center justify-between">
                     <p className="">{_product.title}</p>
                   </div>
-                  <p className="pt-1 text-gray-900">R${_product.price}</p>
-                </a>
-              </Link>
-            </div>
+                  <div className="justify-between flex">
+                    <p className="pt-1 text-gray-900">R$ {_product.price}</p>
+                    <Link href={`/products/${_product.slug}`}>
+                      <a>
+                        <button className="buy-button" style={{ backgroundColor: 'var(--color-primary-4)', color: 'var(--color-primary-2' }} >comprar</button>
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
-    </section>
 
-    // <div className="m-6 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 mt-8">
-    //   {products.map((_product) => (
-    //     <div
-    //       key={_product.id}
-    //       className="border rounded-lg bg-gray-100 hover:shadow-lg shadow-md"
-    //     >
-    //       <Link href={`/products/${_product.slug}`}>
-    //         <a>
-    //           <div className="rounded-t-lg pt-2 pb-2" >
-    //             <img
-    //               className="crop mx-auto"
-    //               src={getStrapiMedia(_product.image.formats.thumbnail.url)}
-    //               alt={_product.title}
-    //             />
-    //           </div>
-    //           <div className="pl-4 pr-4 pb-4 pt-4 rounded-lg" >
-    //             <h4 className="mt-1 font-semibold text-base leading-tight truncate text-gray-700">
-    //               {_product.title}
-    //             </h4>
-    //             <div className="mt-1 text-sm text-gray-700">
-    //               {_product.description}
-    //             </div>
-    //           </div>
-    //         </a>
-    //       </Link>
-    //     </div>
-    //   ))}
-    // </div>
+    </section>
   );
 };
 
