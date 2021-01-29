@@ -44,8 +44,8 @@ const ProductsList = ({ products, categories = [] }) => {
           </div>
         </nav>
 
-        <div className="background-nails">
-          <div className="w-full flex flex-wrap items-center background-white-blur">
+        <div className="background-nails w-full">
+          <div className="w-full flex flex-wrap items-center background-white-blur ">
             {products.map((_product) => (
               <div className="w-full sm:w-1/2 md:w-1/3 xl:w-1/4 p-6 flex flex-col" style={{ height: '100%' }}>
                 <div className="card-product" key={_product.id} style={{ margin: 'auto' }}>
