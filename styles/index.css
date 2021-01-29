@@ -40,3 +40,8 @@
 .buy-button:focus {
     outline: none;
 }
+
+.banner-bg {
+    background-image: url('../public/banner-mona.jpg');
+    background-position: 50% 0%;
+}
