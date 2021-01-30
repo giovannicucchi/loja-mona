@@ -10,9 +10,10 @@ import {
     CarouselCaption,
 } from 'reactstrap';
 
-const CarouselComponent = ({ banners }) => {
+const CarouselComponent = () => {
     const [activeIndex, setActiveIndex] = useState(0);
-    const [animating, setAnimating] = useState(false);
+    const [animating, setAnimating] = useState(false); 
+    const banners = getBanners()
     
 
     const next = () => {
