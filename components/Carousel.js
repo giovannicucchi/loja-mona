@@ -33,7 +33,6 @@ const CarouselComponent = ({ banners }) => {
     }
 
     const slides = banners.map((item) => {
-        console.log('item', item);
         return (
             <CarouselItem
                 onExiting={() => setAnimating(true)}
