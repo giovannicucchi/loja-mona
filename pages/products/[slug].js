@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { getProducts, getProduct, getBanners } from "../../utils/api";
 import { getStrapiMedia } from "../../utils/medias";
 
-const ProductPage = ({ product }) => {
+const ProductPage = ({ product, banners }) => {
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading category...</div>;

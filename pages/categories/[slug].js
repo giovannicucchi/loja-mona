@@ -14,7 +14,7 @@ const CategoryPage = ({ category, categories }) => {
       <Head>
         <title>{category.name} products</title>
       </Head>
-      <ProductsList products={category.products} categories={categories} />
+      <ProductsList banners={banners} products={category.products} categories={categories} />
     </div>
   );
 };
