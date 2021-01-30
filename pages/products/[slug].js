@@ -33,7 +33,7 @@ const ProductPage = ({ product }) => {
 
         {product.status === "published" ? (
           <button
-            className="mt-4 bg-white border border-gray-200 d hover:shadow-lg text-gray-700 font-semibold py-2 px-4 rounded shadow"
+            className="mt-4 border border-gray-200 d hover:shadow-lg text-gray-700 font-semibold py-2 px-4 rounded shadow"
             style={{ backgroundColor: 'var(--color-primary-4)', color: 'var(--color-primary-2' }}
           >
             Comprar agora!
