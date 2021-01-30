@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from 'react'
 import { getStrapiMedia } from "../utils/medias";
 
-const ProductsList = ({ products, categories = [], banners }) => {
+const ProductsList = ({ products, categories = [] }) => {
   const [categoriesOpen, setCategoriesOpen] = React.useState(false)
   const [currentCategory, setCurrentCategory] = React.useState('loja')
 

@@ -14,7 +14,7 @@ const CategoryPage = ({ category, categories }) => {
       <Head>
         <title>{category.name} products</title>
       </Head>
-      <ProductsList banners={banners} products={category.products} categories={categories} />
+      <ProductsList products={category.products} categories={categories} />
     </div>
   );
 };
@@ -23,8 +23,7 @@ export default CategoryPage;
 
 export async function getStaticProps({ params }) {
   const category = await getCategory(params.slug);
-  const banners = await getBanners()
-  return { props: { category, banners }, revalidate: 60  };
+  return { props: { category }, revalidate: 60  };
 }
 
 export async function getStaticPaths() {
