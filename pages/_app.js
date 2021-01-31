@@ -10,7 +10,8 @@ import "../styles/colors.css";
 
 const MyApp = ({ Component, pageProps }) => {
 
-  const [user, setUser ] =  React.useState(null)
+  const [user, setUser ] =  React.useState(null) 
+  console.log("PAGE PROPS", pageProps)
 
   React.useEffect(()=> {
     const token = Cookie.get("token");
