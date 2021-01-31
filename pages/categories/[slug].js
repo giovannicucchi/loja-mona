@@ -23,7 +23,9 @@ export default CategoryPage;
 
 export async function getStaticProps({ params }) {
   const category = await getCategory(params.slug);
-  return { props: { category }, revalidate: 60  };
+  const banners = await getBanners();
+
+  return { props: { category, banners }, revalidate: 60  };
 }
 
 export async function getStaticPaths() {

@@ -63,6 +63,7 @@ export default ProductPage;
 export async function getStaticProps({ params }) {
   const product = await getProduct(params.slug);
   const banners = await getBanners();
+  
   return { props: { product, banners }, revalidate: 60 };
 }
 

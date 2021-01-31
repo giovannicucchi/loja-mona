@@ -51,7 +51,7 @@ const MyApp = ({ Component, pageProps }) => {
       <Layout banners={pageProps.banners} categories={pageProps.categories}>
         <Head>
         </Head>
-        <Component {...pageProps} />
+        <Component {...pageProps} banners={pageProps.banners}/>
       </Layout>
     </AuthContext.Provider>  
   );
@@ -66,7 +66,7 @@ MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx);
   // Fetch global site settings from Strapi
   const categories = await getCategories();
-  const banners = getBanners();
+  const banners = await getBanners();
   // Pass the data to our page via props
   return { ...appProps, pageProps: { categories, banners, path: ctx.pathname } };
 };
