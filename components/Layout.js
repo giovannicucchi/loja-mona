@@ -4,7 +4,6 @@ import CarouselComponent from './Carousel'
 import About from './About'
 
 const Layout = ({ children, banners }) => {
-  console.log('BANNERS', banners)
   return (
     <div className="flex justify-center" style={{ background: "var(--color-primary-0)" }}>
       <div className="max-w-screen-xl flex flex-col min-h-screen w-full">

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { getProducts, getProduct, getBanners } from "../../utils/api";
+import { getProducts, getProduct } from "../../utils/api";
 import { getStrapiMedia } from "../../utils/medias";
 
 const ProductPage = ({ product }) => {
@@ -62,7 +62,6 @@ export default ProductPage;
 
 export async function getStaticProps({ params }) {
   const product = await getProduct(params.slug);
-  
   return { props: { product }, revalidate: 60 };
 }
 

@@ -9,8 +9,6 @@ import "../styles/index.css";
 import "../styles/colors.css";
 
 const MyApp = ({ Component, pageProps }) => {
-  console.log('COMPONENT', Component)
-  console.log("PAGE PROPS", pageProps)
   const [user, setUser ] =  React.useState(null) 
 
   React.useEffect(()=> {
