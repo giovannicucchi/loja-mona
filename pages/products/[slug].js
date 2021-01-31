@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { getProducts, getProduct, getBanners } from "../../utils/api";
 import { getStrapiMedia } from "../../utils/medias";
 
-const ProductPage = ({ product }) => {
+const ProductPage = ({ product, banners }) => {
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading category...</div>;
@@ -62,7 +62,8 @@ export default ProductPage;
 
 export async function getStaticProps({ params }) {
   const product = await getProduct(params.slug);
-  return { props: { product }, revalidate: 60 };
+  const banners = await getBanners();
+  return { props: { product, banners }, revalidate: 60 };
 }
 
 export async function getStaticPaths() {

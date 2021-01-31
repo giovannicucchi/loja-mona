@@ -9,9 +9,9 @@ import "../styles/index.css";
 import "../styles/colors.css";
 
 const MyApp = ({ Component, pageProps }) => {
-
-  const [user, setUser ] =  React.useState(null) 
+  console.log('COMPONENT', Component)
   console.log("PAGE PROPS", pageProps)
+  const [user, setUser ] =  React.useState(null) 
 
   React.useEffect(()=> {
     const token = Cookie.get("token");
@@ -66,7 +66,7 @@ MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx);
   // Fetch global site settings from Strapi
   const categories = await getCategories();
-  const banners = await getBanners();
+  const banners = getBanners();
   // Pass the data to our page via props
   return { ...appProps, pageProps: { categories, banners, path: ctx.pathname } };
 };

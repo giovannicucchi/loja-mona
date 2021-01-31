@@ -4,7 +4,7 @@ import Navbar from "./Navbar"
 import CarouselComponent from './Carousel'
 import About from './About'
 
-const Layout = ({ children, categories, banners }) => {
+const Layout = ({ children, banners }) => {
   return (
     <div className="flex justify-center" style={{ background: "var(--color-primary-0)" }}>
       <div className="max-w-screen-xl flex flex-col min-h-screen w-full">
