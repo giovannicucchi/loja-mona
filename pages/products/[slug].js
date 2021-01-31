@@ -60,19 +60,19 @@ const ProductPage = ({ product }) => {
 
 export default ProductPage;
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const product = await getProduct(params.slug);
-  return { props: { product }, revalidate: 60 };
+  return { props: { product }};
 }
 
-export async function getStaticPaths() {
-  const products = await getProducts();
-  return {
-    paths: products.map((_product) => {
-      return {
-        params: { slug: _product.slug },
-      };
-    }),
-    fallback: true,
-  };
-}
+// export async function getStaticPaths() {
+//   const products = await getProducts();
+//   return {
+//     paths: products.map((_product) => {
+//       return {
+//         params: { slug: _product.slug },
+//       };
+//     }),
+//     fallback: true,
+//   };
+// }
