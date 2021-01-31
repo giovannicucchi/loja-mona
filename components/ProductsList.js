@@ -1,10 +1,41 @@
 import Link from "next/link";
 import React from 'react'
 import { getStrapiMedia } from "../utils/medias";
+import axios from "axios";
 
 const ProductsList = ({ products, categories = [] }) => {
   const [categoriesOpen, setCategoriesOpen] = React.useState(false)
   const [currentCategory, setCurrentCategory] = React.useState('loja')
+  
+  const generateScript = (id)=> {
+    alert(id)
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.dataset.prefereceId = id;
+    script['data-preference-id'] = id
+    script.defer = true
+    script.src = "https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js"
+    
+    document.body.appendChild(script);
+  }
+
+  const onBuy = async (_product) => {
+    await axios.post(`http://192.168.0.104:1337/payment`, 
+      [{
+          "title": _product.name,
+          "unit_price": _product.price,
+          "quantity": 1
+        }]
+      
+      ).then(({data}) => {
+      console.log('data', data)
+      if(data.id)
+        generateScript(data.id)
+      
+    }).catch(err => console.log(err))
+  }
+  
+
 
   return (
 
@@ -59,7 +90,10 @@ const ProductsList = ({ products, categories = [] }) => {
                     <p className="pt-1 text-gray-900">R$ {_product.price}</p>
                     <Link href={`/products/${_product.slug}`}>
                       <a>
-                        <button className="buy-button" style={{ backgroundColor: 'var(--color-primary-4)', color: 'var(--color-primary-2' }} >comprar</button>
+                        <button 
+                          onClick={()=> onBuy(_product)}
+                          className="buy-button" 
+                          style={{ backgroundColor: 'var(--color-primary-4)', color: 'var(--color-primary-2' }} >comprar</button>
                       </a>
                     </Link>
                   </div>

@@ -8,13 +8,17 @@ import AuthContext from '../context/AuthContext'
 import "../styles/index.css";
 import "../styles/colors.css";
 
+
 const MyApp = ({ Component, pageProps }) => {
 
   const [user, setUser ] =  React.useState(null)
 
-  React.useEffect(()=> {
-    const token = Cookie.get("token");
 
+  React.useEffect(()=> {
+    console.log('w', window)
+    // window.Mercadopago.setPublishableKey(process.env.API_PUBLIC_KEY);
+    const token = Cookie.get("token");
+ 
     if (token) {
       // authenticate the token on the server and place set user object
       fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/users/me`, {
