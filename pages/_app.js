@@ -51,7 +51,7 @@ const MyApp = ({ Component, pageProps }) => {
       <Layout banners={pageProps.banners} categories={pageProps.categories}>
         <Head>
         </Head>
-        <Component {...pageProps} banners={pageProps.banners}/>
+        <Component {...pageProps} />
       </Layout>
     </AuthContext.Provider>  
   );

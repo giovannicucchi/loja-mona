@@ -2,13 +2,13 @@ import Head from "next/head";
 import ProductsList from "../components/ProductsList";
 import { getProducts, getBanners } from "../utils/api";
 
-const HomePage = ({ products, categories, banners }) => {
+const HomePage = ({ products, categories }) => {
   return (
     <div>
       <Head>
         <title>Loja da Mona</title>
       </Head>
-      <ProductsList products={products} banners={banners} categories={categories} />
+      <ProductsList products={products} categories={categories} />
     </div>
   );
 };

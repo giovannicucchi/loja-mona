@@ -30,7 +30,7 @@ const CarouselComponent = ({banners}) => {
         setActiveIndex(newIndex);
     }
 
-    const slides = banners && banners.map((item) => {
+    const slides = banners.map((item) => {
         return (
             <CarouselItem
                 onExiting={() => setAnimating(true)}
