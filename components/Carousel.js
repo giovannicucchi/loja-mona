@@ -52,17 +52,16 @@ const CarouselComponent = () => {
     });
 
     return (
-        // <Carousel
-        //     activeIndex={activeIndex}
-        //     next={next}
-        //     previous={previous}
-        // >
-        //     <CarouselIndicators items={banners} activeIndex={activeIndex} onClickHandler={goToIndex} style={{ backgroundColor: 'var(--color-primary-4)!important', color: '--color-primary-4' }} />
-        //     {slides}
-        //     <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-        //     <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-        // </Carousel>
-        <div>carrossel</div>
+        <Carousel
+            activeIndex={activeIndex}
+            next={next}
+            previous={previous}
+        >
+            <CarouselIndicators items={banners} activeIndex={activeIndex} onClickHandler={goToIndex} style={{ backgroundColor: 'var(--color-primary-4)!important', color: '--color-primary-4' }} />
+            {slides}
+            <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
+            <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+        </Carousel>
     );
 }
 
