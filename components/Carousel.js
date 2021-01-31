@@ -30,7 +30,7 @@ const CarouselComponent = ({banners}) => {
         setActiveIndex(newIndex);
     }
 
-    const slides = banners.map((item) => {
+    const slides = banners.length > 0 ? banners.map((item) => {
         return (
             <CarouselItem
                 onExiting={() => setAnimating(true)}
@@ -46,7 +46,12 @@ const CarouselComponent = ({banners}) => {
                 </Link>
             </CarouselItem>
         );
-    });
+    })
+    : {
+        title: 'aaaa',
+        image: 'aaa',
+        text: 'aa'
+    }
 
     return (
         <Carousel
