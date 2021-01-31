@@ -24,6 +24,7 @@ export default CategoryPage;
 export async function getStaticProps({ params }) {
   const category = await getCategory(params.slug);
   const banners = await getBanners();
+  console.log('BANNERS CATEGORIES PAGE', banners)
 
   return { props: { category, banners }, revalidate: 60  };
 }
