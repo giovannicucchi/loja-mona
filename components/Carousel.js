@@ -61,7 +61,7 @@ const CarouselComponent = ({banners}) => {
     //     </Carousel>
     // );
     return (
-        <div>desgfraaaaçaa</div>
+        <div>carrossel</div>
     )
 }
 
