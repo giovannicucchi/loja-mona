@@ -8,7 +8,6 @@ const ProductsList = ({ products, categories = [] }) => {
   const [currentCategory, setCurrentCategory] = React.useState('loja')
   
   const generateScript = (id)=> {
-    alert(id)
     const script = document.createElement("script");
     script.type = "text/javascript";
     script.dataset.prefereceId = id;
@@ -18,17 +17,17 @@ const ProductsList = ({ products, categories = [] }) => {
     
     document.body.appendChild(script);
   }
-
+ 
   const onBuy = async (_product) => {
-    await axios.post(`http://192.168.0.104:1337/payment`, 
+    await axios.post(`https://api-loja-mona.herokuapp.com/payment`, 
       [{
           "title": _product.name,
           "unit_price": _product.price,
-          "quantity": 1
-        }]
+          "quantity": 1,
+          "auto_return": "approved",
+        }],
       
       ).then(({data}) => {
-      console.log('data', data)
       if(data.id)
         generateScript(data.id)
       
