@@ -15,11 +15,10 @@ const ProductPage = ({ product }) => {
         <title>{product.title} product</title>
       </Head>
       <div className="rounded-t-lg pt-2 pb-2">
-        {/* <div style={{ backgroundImage: `url(${getStrapiMedia(product.image.formats.small.url)})` }} className="image-card-wrapper" /> */}
-
         <img
           src={getStrapiMedia(product.image.formats.small.url)}
           className="m-auto"
+          style={{maxHeight: 260}}
           alt={product.title}
         />
       </div>
@@ -34,16 +33,7 @@ const ProductPage = ({ product }) => {
 
         {product.status === "published" ? (
           <button
-            className="mt-4 bg-white border border-gray-200 d hover:shadow-lg text-gray-700 font-semibold py-2 px-4 rounded shadow"
-            data-item-id={product.id}
-            data-item-price={product.price}
-            data-item-url={router.asPath}
-            data-item-description={product.description}
-            data-item-image={getStrapiMedia(
-              product.image.formats.medium.url
-            )}
-            data-item-name={product.title}
-            v-bind="customFields"
+            className="mt-4 border border-gray-200 d hover:shadow-lg text-gray-700 font-semibold py-2 px-4 rounded shadow"
             style={{ backgroundColor: 'var(--color-primary-4)', color: 'var(--color-primary-2' }}
           >
             Comprar agora!
@@ -70,19 +60,19 @@ const ProductPage = ({ product }) => {
 
 export default ProductPage;
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const product = await getProduct(params.slug);
-  return { props: { product }, revalidate: 60 };
+  return { props: { product }};
 }
 
-export async function getStaticPaths() {
-  const products = await getProducts();
-  return {
-    paths: products.map((_product) => {
-      return {
-        params: { slug: _product.slug },
-      };
-    }),
-    fallback: true,
-  };
-}
+// export async function getStaticPaths() {
+//   const products = await getProducts();
+//   return {
+//     paths: products.map((_product) => {
+//       return {
+//         params: { slug: _product.slug },
+//       };
+//     }),
+//     fallback: true,
+//   };
+// }

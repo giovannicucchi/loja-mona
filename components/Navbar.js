@@ -24,7 +24,7 @@ const Navbar = () => {
         <div className={"md:flex md:items-center md:w-auto w-full order-3 md:order-1" +
           (navbarOpen ? " flex" : " hidden")} id="menu">
           <nav>
-            <ul className="md:flex items-center justify-between text-base text-gray-800 pt-4 md:pt-0">
+            <ul className="md:flex items-center justify-between text-base text-gray-800 pt-4 md:pt-0" style={{paddingTop: 0}}>
               {user ?
               <li><a className="inline-block no-underline hover:text-black hover:underline py-2 px-4 md:hidden" onClick={() => {
                 logout();
@@ -61,7 +61,7 @@ const Navbar = () => {
             </svg>
             {user 
               ? <>
-                <ul className="md:flex items-center justify-between text-base text-gray-800 pt-4 md:pt-0">
+                <ul className="md:flex items-center justify-between text-base text-gray-800 pt-4 md:pt-0" style={{paddingTop:0}}>
                   <li>
                     <a  className="inline-block no-underline hover:text-black hover:underline py-2 px-4" style={{paddingRight: 16, fontWeight: 'bold'}}>{user.username}</a> 
                   </li>
@@ -80,7 +80,7 @@ const Navbar = () => {
                   </li>
                 </ul>
                 </>
-              :  <ul className="md:flex items-center justify-between text-base text-gray-800 pt-4 md:pt-0">
+              :  <ul className="md:flex items-center justify-between text-base text-gray-800 pt-4 md:pt-0"  style={{paddingTop:0}}>
                     <li>
                       <a  className="inline-block no-underline hover:text-black hover:underline py-2 px-4"  onClick={()=> router.push("/signin")}>Login </a>
                     </li>

@@ -6,20 +6,18 @@ const Footer = () => {
         <p className="text-xs font-semibold text-gray-600">
           Nova Loja da Mona
       </p>
-        {/* <div className="flex gap-3 ml-4">
-        <a href="https://twitter.com/strapijs" className="max-w-xs ml-4">
-          <img src="/twitter.svg" alt="Twitter" />
-        </a>
-        <a href="https://facebook.com/strapijs" className="ml-3">
+        <div className="flex gap-3 ml-4">
+        
+        <a href="https://www.facebook.com/Lojinhadamona-107874274368278" className="ml-3">
           <img src="/facebook.svg" alt="Facebook" />
         </a>
         <a
-          href="https://github.com/strapi/strapi-starter-next-e-commerce"
+          href="https://www.instagram.com/lojinhadamona/"
           className="ml-3"
         >
-          <img src="/github.svg" alt="GitHub" />
+          <img style={{height:20, width:20}} src="/instagram.svg" alt="instagram" />
         </a>
-      </div> */}
+      </div>
       </div>
     </section>
   );

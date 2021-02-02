@@ -1,8 +1,8 @@
 import Head from "next/head";
 import ProductsList from "../components/ProductsList";
-import { getProducts } from "../utils/api";
+import { getProducts, getBanners } from "../utils/api";
 
-const HomePage = ({ products,categories }) => {
+const HomePage = ({ products, categories }) => {
   return (
     <div>
       <Head>

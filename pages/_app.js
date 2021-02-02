@@ -2,7 +2,7 @@ import React from "react";
 import App from "next/app";
 import Head from "next/head";
 import Layout from "../components/Layout";
-import { getCategories } from "../utils/api";
+import { getCategories, getBanners } from "../utils/api";
 import Cookie from "js-cookie";
 import AuthContext from '../context/AuthContext'
 import "../styles/index.css";
@@ -10,8 +10,9 @@ import "../styles/colors.css";
 
 
 const MyApp = ({ Component, pageProps }) => {
-
-  const [user, setUser ] =  React.useState(null)
+  console.log('COMPONENT', Component)
+  console.log("PAGE PROPS", pageProps)
+  const [user, setUser ] =  React.useState(null) 
 
 
   React.useEffect(()=> {
@@ -51,8 +52,7 @@ const MyApp = ({ Component, pageProps }) => {
         setUser: setUserState,
       }}
       >
-
-      <Layout categories={pageProps.categories}>
+      <Layout banners={pageProps.banners} categories={pageProps.categories}>
         <Head>
         </Head>
         <Component {...pageProps} />
@@ -70,8 +70,9 @@ MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx);
   // Fetch global site settings from Strapi
   const categories = await getCategories();
+  const banners = await getBanners();
   // Pass the data to our page via props
-  return { ...appProps, pageProps: { categories, path: ctx.pathname } };
+  return { ...appProps, pageProps: { categories, banners, path: ctx.pathname } };
 };
 
 export default MyApp;
